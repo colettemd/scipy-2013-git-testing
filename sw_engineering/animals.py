@@ -101,4 +101,17 @@ def filter_animals_by_kind(kind, date, time, species, count):
     filtered_count : list of int
 
     """
-    # fill this in
+    fdate = []
+    ftime = []
+    fspecies = []
+    fcount = []
+
+    for i in range(len(date)):
+        if species[i] == kind:
+            fdate.append(date[i])
+            ftime.append(time[i])
+            fspecies.append(species[i])
+            fcount.append(count[i])
+
+    return fdate, ftime, fspecies, fcount
+
