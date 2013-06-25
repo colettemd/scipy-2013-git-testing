@@ -21,5 +21,31 @@ def test_mean():
     assert animals.mean([5]) == 5
     assert animals.mean([-5,-15,-10]) == -10
     assert animals.mean([1e6,1e7]) == 5.5e6
-    assert animals.mean([-4,2,4,-2]) == 0
-    
+    assert animals
+
+
+def test_filter_animals():
+    date, time, species, count = animals.read_animals('animals.txt')
+    kind = 'Grizzly'
+    d, t, s, c = animals.filter_animals(kind, date, time, species, count)
+
+    assert d == ['2011-04-22']
+    assert t == ['21:06']
+    assert s == ['Grizzly']
+    assert c == [36]
+
+    kind = 'Elk'
+    d, t, s, c = animals.filter_animals(kind, date, time, species, count)
+
+    assert d == ['2011-04-23', '2011-04-23']
+    assert t == ['14:12', '10:24']
+    assert s == ['Elk', 'Elk']
+    assert c == [25, 26]
+
+
+def test_mean_animals():
+    mean = animals.mean_animals('animals.txt', 'Grizzly')
+    assert mean == 36
+
+    mean = animals.mean_animals('animals.txt', 'Elk')
+    assert mean == 25.5
