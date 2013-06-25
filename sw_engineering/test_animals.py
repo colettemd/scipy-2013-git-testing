@@ -27,7 +27,7 @@ def test_mean():
 def test_filter_animals():
     date, time, species, count = animals.read_animals('animals.txt')
     kind = 'Grizzly'
-    d, t, s, c = animals.filter_animals(kind, date, time, species, count)
+    d, t, s, c = animals.filter_animals_by_kind(kind, date, time, species, count)
 
     assert d == ['2011-04-22']
     assert t == ['21:06']
@@ -35,7 +35,7 @@ def test_filter_animals():
     assert c == [36]
 
     kind = 'Elk'
-    d, t, s, c = animals.filter_animals(kind, date, time, species, count)
+    d, t, s, c = animals.filter_animals_by_kind(kind, date, time, species, count)
 
     assert d == ['2011-04-23', '2011-04-23']
     assert t == ['14:12', '10:24']
